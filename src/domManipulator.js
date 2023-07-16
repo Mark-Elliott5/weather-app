@@ -1,3 +1,3 @@
-import queryLocation from './queryLocation';
+import apiCaller from './apiCaller';
 
 export default domManipulator;
