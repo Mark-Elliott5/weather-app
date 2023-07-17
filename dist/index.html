@@ -12,26 +12,46 @@
 </head>
 <body>
     <main id="content">
-        <div id="3-day-forecast">
-            <div id="forecast-today"></div>
-            <div id="forecast-tomorrow"></div>
-            <div id="forecast-dat"></div>
+        <div id="three-day-forecast" class="three-levels">
+            <div id="forecast-today" class="forecast-tabs">
+                <h3>Today</h3>
+                <img>
+                <h3>70</h3>
+            </div>
+            <div id="forecast-tomorrow" class="forecast-tabs">
+                <h3>Tomorrow</h3>
+                <img>
+                <h3>80</h3>
+            </div>
+            <div id="forecast-dat" class="forecast-tabs">
+                <h3>Wednesday</h3>
+                <img>
+                <h3>90</h3>
+            </div>
         </div>
-        <div id="today-wrapper">
+        <div id="today-wrapper" class="three-levels">
             <div id="location-wrapper">
-                <h1 id="location"></h1>
-                <h2 id="date"></h2>
-                <h2 id="time"></h2>
+                <h1 id="location">Lexington</h1>
+                <h2 id="date">07/17/23</h2>
+                <h2 id="time">12:00pm</h2>
             </div>
             <div id="temperature-wrapper">
-                <h1 id="temperature"></h1>
-                <h2 id="feels-like"></h2>
-                <h2 id="humidity"></h2>
+                <div class="stats-wrapper">
+                    <h1 id="temperature">80</h1>
+                </div>
+                <div class="stats-wrapper">
+                    <h2>Feels like: </h2>
+                    <h2 id="feels-like">83</h2>
+                </div>
+                <div class="stats-wrapper">
+                    <h2>Humidity: </h2>
+                    <h2 id="humidity">50%</h2>
+                </div>
             </div>
             <div id="cloud-conditions-wrapper">
-                <h1 id="cloud-conditions"></h1>
-                <h2 id="sunrise-sunset"></h2>
-                <h2 id="wind-speed"></h2>
+                <h1 id="cloud-conditions">Cloudy</h1>
+                <h2 id="sunrise-sunset">6:00am-9:00pm</h2>
+                <h2 id="wind-speed">5mph WSW</h2>
             </div>
         </div>
         <div id="temperature-intervals">
