@@ -10,7 +10,7 @@ const apiCaller = (() => {
       );
       const data = await call.json();
       console.log(data);
-      domManipulator.setForecast(data);
+      domManipulator.updatePage(data);
     } catch (err) {
       alert(err);
     }

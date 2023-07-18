@@ -1,7 +1,4 @@
 const domManipulator = (() => {
-  let forecast;
-  const getForecast = () => forecast;
-
   const startLoadingIcon = () => {
     const loading = document.getElementById('loading');
     loading.classList.remove('hidden');
@@ -12,8 +9,7 @@ const domManipulator = (() => {
     loading.classList.add('hidden');
   };
 
-  const updatePage = () => {
-    const data = getForecast();
+  const updatePage = (data) => {
     const todayMinTemp = data.forecast.forecastday[0].day.mintemp_f;
     const todayMaxTemp = data.forecast.forecastday[0].day.maxtemp_f;
     const tomorrowMinTemp = data.forecast.forecastday[1].day.mintemp_f;
@@ -29,15 +25,8 @@ const domManipulator = (() => {
     stopLoadingIcon();
   };
 
-  const setForecast = (newForecast) => {
-    forecast = newForecast;
-    updatePage();
-  };
-
   return {
     updatePage,
-    setForecast,
-    getForecast,
     startLoadingIcon,
     stopLoadingIcon,
   };
