@@ -15,6 +15,9 @@
 </head>
 <body>
     <main id="content">
+        <form id="search">
+            <input id="query" type="text" name="query" placeholder="Search for a location">
+        </form>
         <div id="three-day-forecast" class="three-levels">
             <div id="forecast-today" class="forecast-tabs">
                 <h3>Today</h3>
@@ -39,17 +42,9 @@
                 <h2 id="time" class="field loading"></h2>
             </div>
             <div id="temperature-wrapper">
-                <div class="stats-wrapper">
                     <h1 id="temperature" class="field loading"></h1>
-                </div>
-                <div class="stats-wrapper">
-                    <h2>Feels like: </h2>
                     <h2 id="feels-like" class="field loading"></h2>
-                </div>
-                <div class="stats-wrapper">
-                    <h2>Humidity: </h2>
                     <h2 id="humidity" class="field loading"></h2>
-                </div>
             </div>
             <div id="cloud-conditions-wrapper">
                 <h1 id="cloud-conditions" class="field loading"></h1>
@@ -154,7 +149,12 @@
                 <h3>11pm</h3>
                 <h3 id="23:00" class="interval-temp field loading"></h3>
             </li>
-        </div>
+        </ul>
+        <footer>
+            <a href="https://github.com/Mark-Elliott5">
+                Designed by Mark Elliott<img src="https://mark-elliott5.github.io/todo-list/925aa8e685ab0217bb34.png" class="github-link">
+            </a>
+        </footer>
     </main>
     <div id="loading-image"  class="loading-image hidden">
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 38 38" stroke="#fff">
