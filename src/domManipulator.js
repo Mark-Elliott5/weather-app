@@ -41,9 +41,9 @@ const domManipulator = (() => {
     const tomorrowTemps = document.getElementById('forecast-tomorrow-temps');
     const thirdDayTemps = document.getElementById('forecast-dat-temps');
     const dayAfterTomorrowElem = document.getElementById('day-after-tomorrow');
-    todayTemps.textContent = `${todayMinTemp}°F - ${todayMaxTemp}°F`;
-    tomorrowTemps.textContent = `${tomorrowMinTemp}°F - ${tomorrowMaxTemp}°F`;
-    thirdDayTemps.textContent = `${thirdDayMinTemp}°F - ${thirdDayMaxTemp}°F`;
+    todayTemps.textContent = `${todayMinTemp}°F/${todayMaxTemp}°F`;
+    tomorrowTemps.textContent = `${tomorrowMinTemp}°F/${tomorrowMaxTemp}°F`;
+    thirdDayTemps.textContent = `${thirdDayMinTemp}°F/${thirdDayMaxTemp}°F`;
     dayAfterTomorrowElem.textContent = `${dayAfterTomorrow}`;
   };
 
@@ -59,17 +59,17 @@ const domManipulator = (() => {
     timeElem.textContent = currentTime;
     const todaysWeather = data.current;
     const currentTemp = todaysWeather.temp_f;
-    const feelsLike = todaysWeather.feelslike_f;
+    const feelsLike = `Feels like ${todaysWeather.feelslike_f}`;
     const { humidity } = todaysWeather;
     const condition = todaysWeather.condition.text;
-    const sunrisesunset = `${data.forecast.forecastday[0].astro.sunrise} - ${data.forecast.forecastday[0].astro.sunset}`;
+    const sunrisesunset = `${data.forecast.forecastday[0].astro.sunrise} Sunrise - ${data.forecast.forecastday[0].astro.sunset} Sunset`;
     const wind = `${todaysWeather.wind_mph}mph ${todaysWeather.wind_dir}`;
     const tempElem = document.getElementById('temperature');
     tempElem.textContent = `${currentTemp}°F`;
     const feelsLikeElem = document.getElementById('feels-like');
     feelsLikeElem.textContent = `${feelsLike}°F`;
     const humidityElem = document.getElementById('humidity');
-    humidityElem.textContent = `${humidity}%`;
+    humidityElem.textContent = `${humidity}% Humidity`;
     const conditionElem = document.getElementById('cloud-conditions');
     conditionElem.textContent = condition;
     const sunElem = document.getElementById('sunrise-sunset');

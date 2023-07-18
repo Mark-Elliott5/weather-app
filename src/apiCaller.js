@@ -39,6 +39,12 @@ const apiCaller = (() => {
   };
 
   const initialQuery = () => {
+    const searchForm = document.getElementById('search');
+    searchForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      searchQuery(`${formData.get('query')}`);
+    });
     domManipulator.startLoadingIcon();
     navigator.geolocation.getCurrentPosition(
       searchCurrentPosition,
