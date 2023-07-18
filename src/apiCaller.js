@@ -35,7 +35,7 @@ const apiCaller = (() => {
       message = 'Location services request timed out. ';
     }
     console.warn(`${message}Please search for a location instead.`);
-    domManipulator.stopLoadingIcon();
+    apiCaller.searchQuery('london');
   };
 
   const initialQuery = () => {

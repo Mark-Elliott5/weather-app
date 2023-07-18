@@ -1,11 +1,11 @@
 const domManipulator = (() => {
   const startLoadingIcon = () => {
-    const loading = document.getElementById('loading');
+    const loading = document.getElementById('loading-image');
     loading.classList.remove('hidden');
   };
 
   const stopLoadingIcon = () => {
-    const loading = document.getElementById('loading');
+    const loading = document.getElementById('loading-image');
     loading.classList.add('hidden');
   };
 
@@ -25,7 +25,7 @@ const domManipulator = (() => {
     return [formattedDate, formattedTime];
   };
 
-  const updatePage = (data) => {
+  const updateForecastColumn = (data) => {
     const { forecast } = data;
     const todayMinTemp = forecast.forecastday[0].day.mintemp_f;
     const todayMaxTemp = forecast.forecastday[0].day.maxtemp_f;
@@ -45,7 +45,9 @@ const domManipulator = (() => {
     tomorrowTemps.textContent = `${tomorrowMinTemp}°F - ${tomorrowMaxTemp}°F`;
     thirdDayTemps.textContent = `${thirdDayMinTemp}°F - ${thirdDayMaxTemp}°F`;
     dayAfterTomorrowElem.textContent = `${dayAfterTomorrow}`;
+  };
 
+  const updateTodayColumn = (data) => {
     const { location } = data;
     const { name } = location;
     const [currentDate, currentTime] = convertTime(location.localtime);
@@ -55,28 +57,65 @@ const domManipulator = (() => {
     dateElem.textContent = currentDate;
     const timeElem = document.getElementById('time');
     timeElem.textContent = currentTime;
-
     const todaysWeather = data.current;
     const currentTemp = todaysWeather.temp_f;
     const feelsLike = todaysWeather.feelslike_f;
     const { humidity } = todaysWeather;
     const condition = todaysWeather.condition.text;
-    const sunrisesunset = `${forecast.forecastday[0].astro.sunrise} - ${forecast.forecastday[0].astro.sunset}`;
-    const wind = `${todaysWeather.wind_mph} ${todaysWeather.wind_dir}`;
+    const sunrisesunset = `${data.forecast.forecastday[0].astro.sunrise} - ${data.forecast.forecastday[0].astro.sunset}`;
+    const wind = `${todaysWeather.wind_mph}mph ${todaysWeather.wind_dir}`;
     const tempElem = document.getElementById('temperature');
     tempElem.textContent = `${currentTemp}°F`;
     const feelsLikeElem = document.getElementById('feels-like');
     feelsLikeElem.textContent = `${feelsLike}°F`;
     const humidityElem = document.getElementById('humidity');
-    humidityElem.textContent = humidity;
+    humidityElem.textContent = `${humidity}%`;
     const conditionElem = document.getElementById('cloud-conditions');
     conditionElem.textContent = condition;
     const sunElem = document.getElementById('sunrise-sunset');
     sunElem.textContent = sunrisesunset;
     const windElem = document.getElementById('wind-speed');
     windElem.textContent = wind;
+  };
 
+  const updateHourlyTempColumn = (data) => {
+    const { hour } = data.forecast.forecastday[0];
+    const intervals = Array.from(
+      document.getElementsByClassName('interval-temp'),
+    );
+    const temps = Array.from(hour);
+    for (let i = 0; i < 24; i += 1) {
+      intervals[i].textContent = `${temps[i].temp_f}°F`;
+    }
+  };
+
+  const updateBackground = (data) => {
+    const background = document.getElementById('content');
+    background.classList = '';
+    const conditionCode = data.current.condition.code;
+    if (conditionCode === 1000) {
+      background.classList.add('sunny');
+    } else if (conditionCode < 1100) {
+      background.classList.add('cloudy');
+    } else {
+      background.classList.add('stormy');
+    }
+  };
+
+  const removeLoadingEllipsis = () => {
+    const elements = document.getElementsByClassName('loading');
+    Array.from(elements).forEach((element) =>
+      element.classList.remove('loading'),
+    );
+  };
+
+  const updatePage = (data) => {
+    updateForecastColumn(data);
+    updateTodayColumn(data);
+    updateHourlyTempColumn(data);
+    updateBackground(data);
     stopLoadingIcon();
+    removeLoadingEllipsis();
   };
 
   return {

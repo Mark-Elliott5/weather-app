@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src=main.js></script>
     <title>Weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16">
@@ -16,144 +19,144 @@
             <div id="forecast-today" class="forecast-tabs">
                 <h3>Today</h3>
                 <img>
-                <h3 id="forecast-today-temps">70</h3>
+                <h3 id="forecast-today-temps" class="field loading"></h3>
             </div>
             <div id="forecast-tomorrow" class="forecast-tabs">
                 <h3>Tomorrow</h3>
                 <img>
-                <h3 id="forecast-tomorrow-temps">80</h3>
+                <h3 id="forecast-tomorrow-temps" class="field loading"></h3>
             </div>
             <div id="forecast-dat" class="forecast-tabs">
-                <h3 id="day-after-tomorrow">Wednesday</h3>
+                <h3 id="day-after-tomorrow">DAT</h3>
                 <img>
-                <h3 id="forecast-dat-temps">90</h3>
+                <h3 id="forecast-dat-temps" class="field loading"></h3>
             </div>
         </div>
         <div id="today-wrapper" class="three-levels">
             <div id="location-wrapper">
-                <h1 id="location">Lexington</h1>
-                <h2 id="date">07/17/23</h2>
-                <h2 id="time">12:00pm</h2>
+                <h1 id="location" class="field loading"></h1>
+                <h2 id="date" class="field loading"></h2>
+                <h2 id="time" class="field loading"></h2>
             </div>
             <div id="temperature-wrapper">
                 <div class="stats-wrapper">
-                    <h1 id="temperature">80</h1>
+                    <h1 id="temperature" class="field loading"></h1>
                 </div>
                 <div class="stats-wrapper">
                     <h2>Feels like: </h2>
-                    <h2 id="feels-like">83</h2>
+                    <h2 id="feels-like" class="field loading"></h2>
                 </div>
                 <div class="stats-wrapper">
                     <h2>Humidity: </h2>
-                    <h2 id="humidity">50%</h2>
+                    <h2 id="humidity" class="field loading"></h2>
                 </div>
             </div>
             <div id="cloud-conditions-wrapper">
-                <h1 id="cloud-conditions">Cloudy</h1>
-                <h2 id="sunrise-sunset">6:00am-9:00pm</h2>
-                <h2 id="wind-speed">5mph WSW</h2>
+                <h1 id="cloud-conditions" class="field loading"></h1>
+                <h2 id="sunrise-sunset" class="field loading"></h2>
+                <h2 id="wind-speed" class="field loading"></h2>
             </div>
         </div>
         <ul id="temperature-intervals">
             <li class="interval">
                 <h3>12am</h3>
-                <h3 id="00:00" class="interval-temp">75</h3>
+                <h3 id="00:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>1am</h3>
-                <h3 id="01:00" class="interval-temp">75</h3>
+                <h3 id="01:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>2am</h3>
-                <h3 id="02:00" class="interval-temp">75</h3>
+                <h3 id="02:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>3am</h3>
-                <h3 id="03:00" class="interval-temp">75</h3>
+                <h3 id="03:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>4am</h3>
-                <h3 id="04:00" class="interval-temp">75</h3>
+                <h3 id="04:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>5am</h3>
-                <h3 id="05:00" class="interval-temp">75</h3>
+                <h3 id="05:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>6am</h3>
-                <h3 id="06:00" class="interval-temp">75</h3>
+                <h3 id="06:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>7am</h3>
-                <h3 id="07:00" class="interval-temp">75</h3>
+                <h3 id="07:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>8am</h3>
-                <h3 id="08:00" class="interval-temp">75</h3>
+                <h3 id="08:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>9am</h3>
-                <h3 id="09:00" class="interval-temp">75</h3>
+                <h3 id="09:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>10am</h3>
-                <h3 id="10:00" class="interval-temp">75</h3>
+                <h3 id="10:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>11am</h3>
-                <h3 id="11:00" class="interval-temp">75</h3>
+                <h3 id="11:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>12pm</h3>
-                <h3 id="12:00" class="interval-temp">75</h3>
+                <h3 id="12:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>1pm</h3>
-                <h3 id="13:00" class="interval-temp">75</h3>
+                <h3 id="13:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>2pm</h3>
-                <h3 id="14:00" class="interval-temp">75</h3>
+                <h3 id="14:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>3pm</h3>
-                <h3 id="15:00" class="interval-temp">75</h3>
+                <h3 id="15:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>4pm</h3>
-                <h3 id="16:00" class="interval-temp">75</h3>
+                <h3 id="16:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>5pm</h3>
-                <h3 id="17:00" class="interval-temp">75</h3>
+                <h3 id="17:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>6pm</h3>
-                <h3 id="18:00" class="interval-temp">75</h3>
+                <h3 id="18:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>7pm</h3>
-                <h3 id="19:00" class="interval-temp">75</h3>
+                <h3 id="19:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>8pm</h3>
-                <h3 id="20:00" class="interval-temp">75</h3>
+                <h3 id="20:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>9pm</h3>
-                <h3 id="21:00" class="interval-temp">75</h3>
+                <h3 id="21:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>10pm</h3>
-                <h3 id="22:00" class="interval-temp">75</h3>
+                <h3 id="22:00" class="interval-temp field loading"></h3>
             </li>
             <li class="interval">
                 <h3>11pm</h3>
-                <h3 id="23:00" class="interval-temp">75</h3>
+                <h3 id="23:00" class="interval-temp field loading"></h3>
             </li>
         </div>
     </main>
-    <div id="loading" class="loading hidden">
+    <div id="loading-image"  class="loading-image hidden">
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 38 38" stroke="#fff">
             <g fill="none" fill-rule="evenodd">
                 <g transform="translate(1 1)" stroke-width="2">
