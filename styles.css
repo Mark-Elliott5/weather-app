@@ -7,6 +7,19 @@ html,body {
     margin: 0;
     background-color: black;
     color: white;
+    font-family: Lora, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.cloudy {
+    background: linear-gradient(0deg, rgb(41 176 255) 42%, rgba(135,135,135,1) 100%);
+}
+
+.sunny {
+    background: linear-gradient(0deg, rgba(15,191,255,1) 25%, rgba(0,119,255,1) 100%);
+}
+
+.stormy {
+    background: linear-gradient(0deg, rgb(115 115 115) 25%, rgb(55 55 55) 100%);
 }
 
 main {
@@ -25,8 +38,10 @@ main {
     grid-column: 3;
 }
 
-main * {
+main > div, ul {
     grid-row: 2;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
 }
 
 .three-levels {
@@ -44,6 +59,7 @@ main * {
     overflow: scroll;
     padding: 0px;
     grid-column: 4;
+    margin: 0;
 }
 
 #three-day-forecast, #temperature-intervals {
@@ -54,7 +70,7 @@ main * {
     height: 36px;
 }
 
-.loading {
+.loading-image {
     position: absolute;
     top: 3%;
     left: 2%;
@@ -63,3 +79,21 @@ main * {
 .hidden {
     display: none;
 }
+
+.loading::after {
+    content: "...";
+    animation: ellipsis 1s infinite;
+}
+
+@keyframes ellipsis {
+    0% {
+      content: ".";
+    }
+    33% {
+      content: "..";
+    }
+    66% {
+      content: "...";
+    }
+  }
+  
