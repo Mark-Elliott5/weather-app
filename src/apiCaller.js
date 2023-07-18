@@ -1,20 +1,21 @@
+import domManipulator from './domManipulator';
+
 const apiCaller = (() => {
   const searchQuery = async (position) => {
     try {
       const call = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=6d0455883e7c4645aa8174008231507&q=${position}`,
+        `https://api.weatherapi.com/v1/forecast.json?key=6d0455883e7c4645aa8174008231507&q=${position}&days=3`,
         { mode: 'cors' },
       );
       const data = await call.json();
       console.log(data);
-      return data;
+      domManipulator.setForecast(data);
     } catch (err) {
       alert(err);
-      return null;
     }
   };
 
-  const searchCurrentPosition = async (position) => {
+  const searchCurrentPosition = (position) => {
     const { latitude } = position.coords;
     const { longitude } = position.coords;
     const location = `${latitude},${longitude}`;
@@ -23,6 +24,7 @@ const apiCaller = (() => {
   };
 
   const initialQuery = async () => {
+    // debugger;
     try {
       navigator.geolocation.getCurrentPosition(searchCurrentPosition);
     } catch (error) {

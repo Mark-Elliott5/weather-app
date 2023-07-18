@@ -1,15 +1,32 @@
 html,body {
-    width: 100%;
-    height: 100%;
-    display: flex;
+    /* width: 100vw; */
+    height: 100vh;
+    /* display: flex;
     justify-content: center;
-    text-align: center;
+    text-align: center; */
+    margin: 0;
+    background-color: black;
+    color: white;
 }
 
 main {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    height: 50%;
+    grid-template-columns: 1fr 2fr 5fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 100vh;
+    text-align: center;
+}
+
+#three-day-forecast {
+    grid-column: 2;
+}
+
+#today-wrapper {
+    grid-column: 3;
+}
+
+main * {
+    grid-row: 2;
 }
 
 .three-levels {
@@ -18,11 +35,31 @@ main {
     justify-content: space-around;
 }
 
-#temperature-intervals {
-    overflow: scroll;
-}
-
-.forecast-tabs {
+.forecast-tabs,.interval {
     display: flex;
     justify-content: space-around;
+}
+
+#temperature-intervals {
+    overflow: scroll;
+    padding: 0px;
+    grid-column: 4;
+}
+
+#three-day-forecast, #temperature-intervals {
+    width: 100%;
+}
+
+.interval {
+    height: 36px;
+}
+
+.loading {
+    position: absolute;
+    top: 3%;
+    left: 2%;
+}
+
+.hidden {
+    display: none;
 }
