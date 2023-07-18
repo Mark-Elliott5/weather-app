@@ -33,12 +33,18 @@ const domManipulator = (() => {
     const tomorrowMaxTemp = forecast.forecastday[1].day.maxtemp_f;
     const thirdDayMinTemp = forecast.forecastday[2].day.mintemp_f;
     const thirdDayMaxTemp = forecast.forecastday[2].day.maxtemp_f;
+    const dayAfterTomorrow = (() => {
+      const date = new Date(forecast.forecastday[2].date);
+      return date.toLocaleDateString('en-US', { weekday: 'long' });
+    })();
     const todayTemps = document.getElementById('forecast-today-temps');
     const tomorrowTemps = document.getElementById('forecast-tomorrow-temps');
     const thirdDayTemps = document.getElementById('forecast-dat-temps');
-    todayTemps.textContent = `${todayMinTemp} - ${todayMaxTemp}`;
-    tomorrowTemps.textContent = `${tomorrowMinTemp} - ${tomorrowMaxTemp}`;
-    thirdDayTemps.textContent = `${thirdDayMinTemp} - ${thirdDayMaxTemp}`;
+    const dayAfterTomorrowElem = document.getElementById('day-after-tomorrow');
+    todayTemps.textContent = `${todayMinTemp}°F - ${todayMaxTemp}°F`;
+    tomorrowTemps.textContent = `${tomorrowMinTemp}°F - ${tomorrowMaxTemp}°F`;
+    thirdDayTemps.textContent = `${thirdDayMinTemp}°F - ${thirdDayMaxTemp}°F`;
+    dayAfterTomorrowElem.textContent = `${dayAfterTomorrow}`;
 
     const { location } = data;
     const { name } = location;
@@ -50,14 +56,26 @@ const domManipulator = (() => {
     const timeElem = document.getElementById('time');
     timeElem.textContent = currentTime;
 
-    // const todaysWeather = data.current;
-    // const currentTemp = todaysWeather.temp_f;
-    // const feelsLike = todaysWeather.feelslike_f;
-    // const { humidity } = todaysWeather;
-    // const condition = todaysWeather.condition.text;
-    // const sunrisesunset = `${forecast.forecastday[0].astro.sunrise} - ${forecast.forecastday[0].astro.sunset}`;
-    // const wind = `${todaysWeather.wind_mph} ${wind_dir}`;
-    // const currentTemp = ;
+    const todaysWeather = data.current;
+    const currentTemp = todaysWeather.temp_f;
+    const feelsLike = todaysWeather.feelslike_f;
+    const { humidity } = todaysWeather;
+    const condition = todaysWeather.condition.text;
+    const sunrisesunset = `${forecast.forecastday[0].astro.sunrise} - ${forecast.forecastday[0].astro.sunset}`;
+    const wind = `${todaysWeather.wind_mph} ${todaysWeather.wind_dir}`;
+    const tempElem = document.getElementById('temperature');
+    tempElem.textContent = `${currentTemp}°F`;
+    const feelsLikeElem = document.getElementById('feels-like');
+    feelsLikeElem.textContent = `${feelsLike}°F`;
+    const humidityElem = document.getElementById('humidity');
+    humidityElem.textContent = humidity;
+    const conditionElem = document.getElementById('cloud-conditions');
+    conditionElem.textContent = condition;
+    const sunElem = document.getElementById('sunrise-sunset');
+    sunElem.textContent = sunrisesunset;
+    const windElem = document.getElementById('wind-speed');
+    windElem.textContent = wind;
+
     stopLoadingIcon();
   };
 
