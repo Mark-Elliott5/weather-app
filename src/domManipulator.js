@@ -25,6 +25,13 @@ const domManipulator = (() => {
     return [formattedDate, formattedTime];
   };
 
+  const getDayOfWeek = (date) => {
+    const day = new Date(date);
+    return day.toLocaleDateString('en-US', { weekday: 'long' });
+  };
+
+  const tempString = (min, max) => `${min}°F/${max}°F`;
+
   const updateForecastColumn = (data) => {
     const { forecast } = data;
     const todayMinTemp = forecast.forecastday[0].day.mintemp_f;
@@ -33,18 +40,29 @@ const domManipulator = (() => {
     const tomorrowMaxTemp = forecast.forecastday[1].day.maxtemp_f;
     const thirdDayMinTemp = forecast.forecastday[2].day.mintemp_f;
     const thirdDayMaxTemp = forecast.forecastday[2].day.maxtemp_f;
-    const dayAfterTomorrow = (() => {
-      const date = new Date(forecast.forecastday[2].date);
-      return date.toLocaleDateString('en-US', { weekday: 'long' });
-    })();
+    const fourthDayMinTemp = forecast.forecastday[3].day.mintemp_f;
+    const fourthDayMaxTemp = forecast.forecastday[3].day.maxtemp_f;
+    const fifthDayMinTemp = forecast.forecastday[4].day.mintemp_f;
+    const fifthDayMaxTemp = forecast.forecastday[4].day.maxtemp_f;
+    const thirdDay = getDayOfWeek(forecast.forecastday[2].date);
+    const fourthDay = getDayOfWeek(forecast.forecastday[3].date);
+    const fifthDay = getDayOfWeek(forecast.forecastday[4].date);
     const todayTemps = document.getElementById('forecast-today-temps');
     const tomorrowTemps = document.getElementById('forecast-tomorrow-temps');
     const thirdDayTemps = document.getElementById('forecast-dat-temps');
-    const dayAfterTomorrowElem = document.getElementById('day-after-tomorrow');
-    todayTemps.textContent = `${todayMinTemp}°F/${todayMaxTemp}°F`;
-    tomorrowTemps.textContent = `${tomorrowMinTemp}°F/${tomorrowMaxTemp}°F`;
-    thirdDayTemps.textContent = `${thirdDayMinTemp}°F/${thirdDayMaxTemp}°F`;
-    dayAfterTomorrowElem.textContent = `${dayAfterTomorrow}`;
+    const fourthDayTemps = document.getElementById('forecast-dat2-temps');
+    const fifthDayTemps = document.getElementById('forecast-dat3-temps');
+    const thirdDayElem = document.getElementById('day-after-tomorrow');
+    const fourthDayElem = document.getElementById('dat2');
+    const fifthDayElem = document.getElementById('dat3');
+    todayTemps.textContent = tempString(todayMinTemp, todayMaxTemp);
+    tomorrowTemps.textContent = tempString(tomorrowMinTemp, tomorrowMaxTemp);
+    thirdDayTemps.textContent = tempString(thirdDayMinTemp, thirdDayMaxTemp);
+    fourthDayTemps.textContent = tempString(fourthDayMinTemp, fourthDayMaxTemp);
+    fifthDayTemps.textContent = tempString(fifthDayMinTemp, fifthDayMaxTemp);
+    thirdDayElem.textContent = `${thirdDay}`;
+    fourthDayElem.textContent = `${fourthDay}`;
+    fifthDayElem.textContent = `${fifthDay}`;
   };
 
   const updateTodayColumn = (data) => {

@@ -5,7 +5,7 @@ const apiCaller = (() => {
     try {
       domManipulator.startLoadingIcon();
       const call = await fetch(
-        `https://api.weatherapi.com/v1/forecast.json?key=6d0455883e7c4645aa8174008231507&q=${position}&days=3`,
+        `https://api.weatherapi.com/v1/forecast.json?key=6d0455883e7c4645aa8174008231507&q=${position}&days=5`,
         { mode: 'cors' },
       );
       const data = await call.json();
