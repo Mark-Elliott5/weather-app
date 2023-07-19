@@ -32,6 +32,7 @@ main {
 
 #three-day-forecast {
     grid-column: 2;
+    padding: 4px;
 }
 
 #today-wrapper {
@@ -74,7 +75,7 @@ h1 {
     justify-content: space-around;
 }
 
-.forecast-tabs,.interval {
+.forecast-tabs, .interval {
     display: flex;
     justify-content: space-around;
 }
@@ -84,6 +85,7 @@ h1 {
     padding: 0px;
     grid-column: 6;
     margin: 0;
+    scrollbar-width: none;
 }
 
 #three-day-forecast, #temperature-intervals {
