@@ -27,6 +27,7 @@ const domManipulator = (() => {
 
   const getDayOfWeek = (date) => {
     const day = new Date(date);
+    day.setMinutes(day.getMinutes() + day.getTimezoneOffset());
     return day.toLocaleDateString('en-US', { weekday: 'long' });
   };
 
