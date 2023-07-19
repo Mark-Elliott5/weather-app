@@ -118,6 +118,11 @@ const domManipulator = (() => {
     removeLoadingEllipsis();
   };
 
+  // const alertUser = () => {
+  //   const location = document.getElementById('location');
+  //   location.textContent = `Please search for a location instead.`;
+  // };
+
   return {
     updatePage,
     startLoadingIcon,

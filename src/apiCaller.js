@@ -9,10 +9,10 @@ const apiCaller = (() => {
         { mode: 'cors' },
       );
       const data = await call.json();
-      console.log(data);
+      // console.log(data);
       domManipulator.updatePage(data);
     } catch (error) {
-      console.warn(error);
+      // console.warn(error);
       domManipulator.stopLoadingIcon();
     }
   };
@@ -21,20 +21,20 @@ const apiCaller = (() => {
     const { latitude } = position.coords;
     const { longitude } = position.coords;
     const location = `${latitude},${longitude}`;
-    console.log(location);
+    // console.log(location);
     searchQuery(location);
   };
 
-  const geolocationError = (error) => {
-    let message;
-    if (error.code === 1) {
-      message = 'User denied location services. ';
-    } else if (error.code === 2) {
-      message = 'Position unavailable. ';
-    } else {
-      message = 'Location services request timed out. ';
-    }
-    console.warn(`${message}Please search for a location instead.`);
+  const geolocationError = () => {
+    // let message;
+    // if (error.code === 1) {
+    //   message = 'User denied location services. ';
+    // } else if (error.code === 2) {
+    //   message = 'Position unavailable. ';
+    // } else {
+    //   message = 'Location services request timed out. ';
+    // }
+    // console.warn(`${message}Please search for a location instead.`);
     apiCaller.searchQuery('london');
   };
 
