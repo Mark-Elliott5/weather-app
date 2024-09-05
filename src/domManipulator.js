@@ -41,29 +41,15 @@ const domManipulator = (() => {
     const tomorrowMaxTemp = forecast.forecastday[1].day.maxtemp_f;
     const thirdDayMinTemp = forecast.forecastday[2].day.mintemp_f;
     const thirdDayMaxTemp = forecast.forecastday[2].day.maxtemp_f;
-    const fourthDayMinTemp = forecast.forecastday[3].day.mintemp_f;
-    const fourthDayMaxTemp = forecast.forecastday[3].day.maxtemp_f;
-    const fifthDayMinTemp = forecast.forecastday[4].day.mintemp_f;
-    const fifthDayMaxTemp = forecast.forecastday[4].day.maxtemp_f;
     const thirdDay = getDayOfWeek(forecast.forecastday[2].date);
-    const fourthDay = getDayOfWeek(forecast.forecastday[3].date);
-    const fifthDay = getDayOfWeek(forecast.forecastday[4].date);
     const todayTemps = document.getElementById('forecast-today-temps');
     const tomorrowTemps = document.getElementById('forecast-tomorrow-temps');
     const thirdDayTemps = document.getElementById('forecast-dat-temps');
-    const fourthDayTemps = document.getElementById('forecast-dat2-temps');
-    const fifthDayTemps = document.getElementById('forecast-dat3-temps');
     const thirdDayElem = document.getElementById('day-after-tomorrow');
-    const fourthDayElem = document.getElementById('dat2');
-    const fifthDayElem = document.getElementById('dat3');
     todayTemps.textContent = tempString(todayMinTemp, todayMaxTemp);
     tomorrowTemps.textContent = tempString(tomorrowMinTemp, tomorrowMaxTemp);
     thirdDayTemps.textContent = tempString(thirdDayMinTemp, thirdDayMaxTemp);
-    fourthDayTemps.textContent = tempString(fourthDayMinTemp, fourthDayMaxTemp);
-    fifthDayTemps.textContent = tempString(fifthDayMinTemp, fifthDayMaxTemp);
     thirdDayElem.textContent = `${thirdDay}`;
-    fourthDayElem.textContent = `${fourthDay}`;
-    fifthDayElem.textContent = `${fifthDay}`;
   };
 
   const updateTodayColumn = (data) => {
